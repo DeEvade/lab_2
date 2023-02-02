@@ -5,13 +5,30 @@
  This file is in the public domain.
 */
 
-
 #include <stdio.h>
 #include <stdlib.h>
 
 #define COLUMNS 6
 
+int SPACES_BETWEEN_NUMBERS = 8;
 
+void calculate_amount_of_spaces(int prime_number)
+{ // Probably not a good way to do this but i dont know what else to do
+  int spaceCounter = SPACES_BETWEEN_NUMBERS;
+  double number = prime_number;
+  while (number >= 10)
+  {
+    number = number / 10;
+    spaceCounter--;
+  }
+
+  while (spaceCounter > 0)
+  {
+    spaceCounter--;
+
+    printf(" ");
+  }
+}
 
 int is_prime(int n)
 {
@@ -35,7 +52,8 @@ void print_number(int n)
     if (is_prime(i))
     {
       COUNTER++;
-      printf("        %d", i);
+      calculate_amount_of_spaces(i);
+      printf("%d", i);
     }
 
     if (COUNTER == COLUMNS)
@@ -46,14 +64,13 @@ void print_number(int n)
   }
 }
 
-
-/*void print_primes(int n){
+void print_primes(int n){
   // Should print out all prime numbers less than 'n'
   // with the following formatting. Note that
   // the number of columns is stated in the define
   // COLUMNS
 
-  printf("%10d ", 2);
+/*  printf("%10d ", 2);
   printf("%10d ", 3);
   printf("%10d ", 5);
   printf("%10d ", 7);
@@ -63,18 +80,19 @@ void print_number(int n)
   printf("%10d ", 17);
   printf("%10d ", 19);
 
-  printf("\n");
-}*/
+  printf("\n");*/
+
+  print_number(n);
+}
 
 // 'argc' contains the number of program arguments, and
 // 'argv' is an array of char pointers, where each
 // char pointer points to a null-terminated string.
-int main(int argc, char *argv[]){
-  if(argc == 2)
-    print_number(atoi(argv[1]));
+int main(int argc, char *argv[])
+{
+  if (argc == 2)
+    print_primes(atoi(argv[1]));
   else
     printf("Please state an interger number.\n");
   return 0;
 }
-
- 
