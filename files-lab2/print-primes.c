@@ -45,6 +45,29 @@ int is_prime(int n)
 
 void print_number(int n)
 {
+  calculate_amount_of_spaces(n);
+  printf("%d", n);
+}
+
+void print_primes(int n)
+{
+  // Should print out all prime numbers less than 'n'
+  // with the following formatting. Note that
+  // the number of columns is stated in the define
+  // COLUMNS
+
+  /*  printf("%10d ", 2);
+    printf("%10d ", 3);
+    printf("%10d ", 5);
+    printf("%10d ", 7);
+    printf("%10d ", 11);
+    printf("%10d ", 13);
+    printf("\n");
+    printf("%10d ", 17);
+    printf("%10d ", 19);
+
+    printf("\n");*/
+
   int COUNTER = 0; // The amount of primen numbers that have been counted
 
   for (int i = 2; i <= n; i++)
@@ -52,8 +75,7 @@ void print_number(int n)
     if (is_prime(i))
     {
       COUNTER++;
-      calculate_amount_of_spaces(i);
-      printf("%d", i);
+      print_number(i);
     }
 
     if (COUNTER == COLUMNS)
@@ -62,27 +84,6 @@ void print_number(int n)
       printf("\n");
     }
   }
-}
-
-void print_primes(int n){
-  // Should print out all prime numbers less than 'n'
-  // with the following formatting. Note that
-  // the number of columns is stated in the define
-  // COLUMNS
-
-/*  printf("%10d ", 2);
-  printf("%10d ", 3);
-  printf("%10d ", 5);
-  printf("%10d ", 7);
-  printf("%10d ", 11);
-  printf("%10d ", 13);
-  printf("\n");
-  printf("%10d ", 17);
-  printf("%10d ", 19);
-
-  printf("\n");*/
-
-  print_number(n);
 }
 
 // 'argc' contains the number of program arguments, and
